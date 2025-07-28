@@ -1,0 +1,28 @@
+name: Daily ENTSO-E & ILR Data Download
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Runs every day at 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install entsoe-py beautifulsoup4 requests pandas
+
+      - name: Run daily_data_lux.py
+        env:
+          ENTSOE_API_KEY: ${{ secrets.ENTSOE_API_KEY }}
+        run: python daily_data_lux.py

@@ -1,0 +1,5 @@
+entsoe-py
+beautifulsoup4
+requests
+pandas
+PyPDF2
