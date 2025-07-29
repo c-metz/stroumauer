@@ -9,8 +9,14 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
+      steps:
+      - name: Echo workflow version
+        run: echo "This is the latest workflow version"
+
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,5 +41,3 @@ jobs:
           git add data/entsoe_lux.csv || true
           git commit -m "Update data files from workflow run" || echo "No changes to commit"
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
