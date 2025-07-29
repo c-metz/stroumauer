@@ -9,7 +9,6 @@ jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
-      steps:
       - name: Echo workflow version
         run: echo "This is the latest workflow version"
 
@@ -40,4 +39,4 @@ jobs:
           git add data/ilr-energie-centrales-de-production-canton-commune-details-v2.xlsx || true
           git add data/entsoe_lux.csv || true
           git commit -m "Update data files from workflow run" || echo "No changes to commit"
-          git push
+          git push --force
