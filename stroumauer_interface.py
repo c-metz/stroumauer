@@ -6,7 +6,7 @@ import os
 from streamlit import columns
 
 # Load the Excel file
-file_path = r'C:/Users/notyo/Documents/02_Aner_Engagementer/Stroumauer/data/ilr-energie-centrales-de-production-canton-commune-details-v2.xlsx'
+file_path = r'data/ilr-energie-centrales-de-production-canton-commune-details-v2.xlsx'
 df = pd.read_excel(file_path)
 
 # Filter for photovoltaics only
@@ -24,7 +24,7 @@ else:
     st.stop()
 
 # Load coordinates from adresses.csv instead of geopy
-adresses_path = r'C:/Users/notyo/Documents/02_Aner_Engagementer/Stroumauer/data/addresses.csv'
+adresses_path = r'data/addresses.csv'
 adresses_df = pd.read_csv(adresses_path, sep=";")
 # Only keep relevant columns and average lat/lon per commune
 adresses_df = adresses_df[['commune', 'lat_wgs84', 'lon_wgs84']]
@@ -110,7 +110,7 @@ st.plotly_chart(fig_all_installed, use_container_width=True)
 # --- Actual production chart from CSV ---
 import matplotlib.pyplot as plt
 
-csv_path = r"C:/Users/notyo/Documents/02_Aner_Engagementer/Stroumauer/data/entsoe_lux.csv"
+csv_path = r"data/entsoe_lux.csv"
 prod_cols = ['Load', 'Hydro Run-of-river and poundage', 'Wind Onshore', 'Solar', "Biomass", 'Fossil Gas', 'Waste']
 
 # Read CSV, skip the second row (header=0, skiprows=[1])
@@ -233,7 +233,7 @@ import re
 from collections import Counter
 import matplotlib.dates as mdates
 
-pdf_path = r'C:/Users/notyo/Documents/02_Aner_Engagementer/Stroumauer/data/ilr-elc-pub-Communautes-Energetiques.pdf'
+pdf_path = r'data/ilr-elc-pub-Communautes-Energetiques.pdf'
 
 try:
     import PyPDF2
